@@ -9,6 +9,7 @@ vsc-extension-quickstart.md
 **/*.map
 **/*.ts
 node_modules/**
+build/**
 !node_modules/@vscode/sqlite3/build/**
 !dist/**
 !media/**

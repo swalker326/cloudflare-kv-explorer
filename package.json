@@ -4,9 +4,9 @@
   "description": "Browse and inspect Cloudflare Workers KV stores during local development with Wrangler",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/cloudflare-kv-explorer"
+    "url": "https://github.com/swalker326/cloudflare-kv-explorer"
   },
-  "version": "1.0.4",
+  "version": "1.0.6",
   "publisher": "swalkerdev",
   "icon": "icon.png",
   "engines": {

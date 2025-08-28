@@ -31,12 +31,16 @@
 - Click any key to open its value in a new editor tab
 - JSON values are automatically formatted
 
+![Tree View](media/tree.png)
+
 ### Searching
 - Click the search icon (🔍) in the toolbar
 - Type to search across both keys and values
 - Results appear instantly with value previews
 - Select a result to open it directly
 - The tree filters to show only matching namespaces
+
+![Search View](media/search.png)
 
 ### Quick Actions
 - **Copy Value**: Right-click a key and select "Copy Value" 

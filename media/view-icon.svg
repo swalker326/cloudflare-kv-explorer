@@ -1,0 +1,6 @@
+<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+  <!-- Simple database icon optimized for small size -->
+  <path d="M8 3C5.79 3 4 3.9 4 5s1.79 2 4 2 4-.9 4-2-1.79-2-4-2z"/>
+  <path d="M4 7v2c0 1.1 1.79 2 4 2s4-.9 4-2V7c0 1.1-1.79 2-4 2S4 8.1 4 7z"/>
+  <path d="M4 11v2c0 1.1 1.79 2 4 2s4-.9 4-2v-2c0 1.1-1.79 2-4 2s-4-.9-4-2z"/>
+</svg>

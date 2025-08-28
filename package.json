@@ -1,0 +1,165 @@
+{
+  "name": "cloudflare-kv-explorer",
+  "displayName": "Cloudflare KV Explorer",
+  "description": "Browse and inspect Cloudflare Workers KV stores during local development with Wrangler",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/cloudflare-kv-explorer"
+  },
+  "version": "1.0.4",
+  "publisher": "swalkerdev",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other",
+    "Debuggers"
+  ],
+  "keywords": [
+    "cloudflare",
+    "workers",
+    "kv",
+    "wrangler",
+    "edge"
+  ],
+  "activationEvents": [
+    "workspaceContains:wrangler.toml",
+    "workspaceContains:**/wrangler.toml",
+    "onView:cloudflareKVExplorer"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "cloudflare-kv-explorer.openKey",
+        "title": "Open KV Entry",
+        "icon": "$(file)"
+      },
+      {
+        "command": "cloudflare-kv-explorer.copyValue",
+        "title": "Copy Value",
+        "icon": "$(copy)"
+      },
+      {
+        "command": "cloudflare-kv-explorer.refreshEntry",
+        "title": "Refresh Entry",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "cloudflare-kv-explorer.refreshTree",
+        "title": "Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "cloudflare-kv-explorer.searchKeys",
+        "title": "Search Keys",
+        "icon": "$(search)"
+      },
+      {
+        "command": "cloudflare-kv-explorer.clearSearch",
+        "title": "Clear Search",
+        "icon": "$(clear-all)"
+      },
+      {
+        "command": "cloudflare-kv-explorer.compareEntries",
+        "title": "Compare KV Entries",
+        "icon": "$(diff)"
+      },
+      {
+        "command": "cloudflare-kv-explorer.showLogs",
+        "title": "Cloudflare KV: Show Logs",
+        "category": "Developer"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "cloudflareKVExplorer",
+          "name": "Cloudflare KV",
+          "icon": "media/view-icon.svg",
+          "contextualTitle": "Cloudflare KV Explorer"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "cloudflareKVExplorer",
+        "contents": "No Cloudflare Workers found.\n[Open Folder](command:vscode.openFolder)\nCreate a wrangler.toml file in your workspace to get started."
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "cloudflare-kv-explorer.refreshTree",
+          "when": "view == cloudflareKVExplorer",
+          "group": "navigation@1"
+        },
+        {
+          "command": "cloudflare-kv-explorer.searchKeys",
+          "when": "view == cloudflareKVExplorer",
+          "group": "navigation@2"
+        },
+        {
+          "command": "cloudflare-kv-explorer.clearSearch",
+          "when": "view == cloudflareKVExplorer && cloudflareKVExplorer.searching",
+          "group": "navigation@3"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "cloudflare-kv-explorer.copyValue",
+          "when": "view == cloudflareKVExplorer && viewItem == key",
+          "group": "inline"
+        },
+        {
+          "command": "cloudflare-kv-explorer.refreshEntry",
+          "when": "view == cloudflareKVExplorer && viewItem == key",
+          "group": "inline"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "cloudflare-kv-explorer.openKey",
+          "when": "false"
+        },
+        {
+          "command": "cloudflare-kv-explorer.copyValue",
+          "when": "false"
+        },
+        {
+          "command": "cloudflare-kv-explorer.refreshEntry",
+          "when": "false"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run build",
+    "clean": "rm -rf dist",
+    "build": "pnpm run clean && rspack build --mode production",
+    "dev": "rspack build --mode development --watch",
+    "lint": "eslint src --ext ts",
+    "package": "vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.30.0",
+    "@rspack/cli": "^1.5.0",
+    "@rspack/core": "^1.5.0",
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.74.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vscode/vsce": "^3.6.0",
+    "eslint": "^9.30.0",
+    "node-loader": "^2.1.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "@rspack/cli": "^1.5.0",
+    "@rspack/core": "^1.5.0",
+    "@vscode/sqlite3": "5.1.8-vscode",
+    "chokidar": "^3.5.3",
+    "toml": "^3.0.0"
+  }
+}

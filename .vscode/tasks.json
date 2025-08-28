@@ -1,0 +1,52 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "pnpm: dev",
+      "command": "pnpm",
+      "args": ["run", "dev"],
+      "problemMatcher": {
+        "owner": "rspack",
+        "pattern": {
+          "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^Rspack.*",
+          "endsPattern": "^Rspack.*successfully.*|^webpack.*compiled.*|compiled successfully"
+        }
+      },
+      "isBackground": true,
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "type": "shell",
+      "label": "pnpm: build",
+      "command": "pnpm",
+      "args": ["run", "build"],
+      "problemMatcher": [
+        {
+          "owner": "rspack",
+          "pattern": {
+            "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "severity": 4,
+            "message": 5
+          }
+        }
+      ],
+      "group": "build"
+    }
+  ]
+}
